@@ -7,5 +7,4 @@ public interface CalculationService {
 
     double findArea(Triangle triangle);
 
-    boolean isTriangle(Triangle triangle);
 }

@@ -9,26 +9,37 @@ import ru.gmail.gasimov.task3.util.IdGenerator;
 import java.util.Objects;
 
 public class Triangle implements Observable {
-
     private final long shapeId;
+
     private Point firstPoint;
     private Point secondPoint;
     private Point thirdPoint;
-
+    private TriangleType triangleType;
     private TriangleObserver triangleObserver;
 
-    {
-        this.triangleObserver = null;
-        this.shapeId = IdGenerator.generateId();
-    }
 
     public Triangle() {
     }
 
-    public Triangle(Point firstPoint, Point secondPoint, Point thirdPoint) {
-        this.firstPoint = firstPoint;
-        this.secondPoint = secondPoint;
-        this.thirdPoint = thirdPoint;
+    public TriangleType getTriangleType() {
+        return triangleType;
+    }
+
+    public void setTriangleType(TriangleType triangleType) {
+        this.triangleType = triangleType;
+    }
+
+    public TriangleObserver getTriangleObserver() {
+        return triangleObserver;
+    }
+
+    public void setTriangleObserver(TriangleObserver triangleObserver) {
+        this.triangleObserver = triangleObserver;
+    }
+
+    {
+        this.triangleObserver = null;
+        this.shapeId = IdGenerator.generateId();
     }
 
     public long getShapeId() {
@@ -85,7 +96,8 @@ public class Triangle implements Observable {
         return shapeId == triangle.shapeId &&
                 Objects.equals(firstPoint, triangle.firstPoint) &&
                 Objects.equals(secondPoint, triangle.secondPoint) &&
-                Objects.equals(thirdPoint, triangle.thirdPoint);
+                Objects.equals(thirdPoint, triangle.thirdPoint) &&
+                Objects.equals(triangleType, triangle.triangleType);
     }
 
     @Override
@@ -96,6 +108,7 @@ public class Triangle implements Observable {
         result = result * prime + firstPoint.hashCode();
         result = result * prime + secondPoint.hashCode();
         result = result * prime + thirdPoint.hashCode();
+        result = result * prime + triangleType.hashCode();
 
         return result;
     }
