@@ -11,7 +11,10 @@ import ru.gmail.gasimov.task3.observer.impl.TriangleObserverImpl;
 import ru.gmail.gasimov.task3.parser.TriangleParser;
 import ru.gmail.gasimov.task3.reader.TriangleReader;
 import ru.gmail.gasimov.task3.repository.Repository;
+import ru.gmail.gasimov.task3.repository.Specification;
+import ru.gmail.gasimov.task3.repository.impl.TriangleAreaSpecification;
 import ru.gmail.gasimov.task3.repository.impl.TriangleRepository;
+import ru.gmail.gasimov.task3.repository.impl.TriangleTypeSpecification;
 import ru.gmail.gasimov.task3.service.CalculationService;
 import ru.gmail.gasimov.task3.service.impl.CalculationServiceImpl;
 import ru.gmail.gasimov.task3.warehouse.TriangleWarehouse;
@@ -50,7 +53,7 @@ public class App {
             double area = service.findArea(triangles.get(i));
             TriangleParameter triangleParameter = new TriangleParameter(area, perimeter);
             triangleWarehouse.put(triangles.get(1).getTriangleId(), triangleParameter);
-           //System.out.println(triangleParameter);
+            //System.out.println(triangleParameter);
         }
 
         repository.add(triangles.get(1));
@@ -72,5 +75,9 @@ public class App {
             System.out.println(repository.get(i));
         }
 
+        Specification typeSpecification = new TriangleTypeSpecification("arbitrary");
+        Specification specification = new TriangleAreaSpecification(4, 12);
+        List query = repository.query(typeSpecification);
+        List query1 = repository.query(specification);
     }
 }
