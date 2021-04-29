@@ -29,14 +29,6 @@ public class Point {
     }
 
     @Override
-    public String toString() {
-        return "Point{" +
-                "x=" + x +
-                ", y=" + y +
-                '}';
-    }
-
-    @Override
     public int hashCode() {
         int prime = 31;
         int result = 1;
@@ -59,5 +51,14 @@ public class Point {
 
         Point point = (Point) obj;
         return x == point.x && y == point.y;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Point{");
+        sb.append("x=").append(x);
+        sb.append(", y=").append(y);
+        sb.append('}');
+        return sb.toString();
     }
 }

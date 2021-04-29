@@ -1,11 +1,13 @@
-package ru.gmail.gasimov.task3.util;
+package ru.gmail.gasimov.task3.service.impl;
 
 import ru.gmail.gasimov.task3.entity.Point;
 import ru.gmail.gasimov.task3.entity.Triangle;
 import ru.gmail.gasimov.task3.entity.TriangleType;
+import ru.gmail.gasimov.task3.service.FindService;
 
-public class TriangleUtil {
-    public static TriangleType findTriangleType(Triangle triangle) {
+public class FindServiceImpl implements FindService {
+    @Override
+    public TriangleType findTriangleType(Triangle triangle) {
         double firstSide = TriangleUtil.findSide(triangle.getFirstPoint(), triangle.getSecondPoint());
         double secondSide = TriangleUtil.findSide(triangle.getFirstPoint(), triangle.getThirdPoint());
         double thirdSide = TriangleUtil.findSide(triangle.getSecondPoint(), triangle.getThirdPoint());
@@ -27,7 +29,27 @@ public class TriangleUtil {
         return TriangleType.ARBITRARY;
     }
 
-    public static double findSide(Point x, Point y) {
+    @Override
+    public double[] findSides(Triangle triangle) {
+        int sideCount = 3;
+        double[] sides = new double[sideCount];
+        Point firstPoint = triangle.getFirstPoint();
+        Point secondPoint = triangle.getSecondPoint();
+        Point thirdPoint = triangle.getThirdPoint();
+
+        double firstSide = TriangleUtil.findSide(firstPoint, secondPoint);
+        double secondSide = TriangleUtil.findSide(secondPoint, thirdPoint);
+        double thirdSide = TriangleUtil.findSide(thirdPoint, firstPoint);
+
+        sides[0] = firstSide;
+        sides[1] = secondSide;
+        sides[2] = thirdSide;
+
+        return sides;
+    }
+
+    @Override
+    public double findSide(Point x, Point y) {
         double firstPointPow = Math.pow(x.getX() - y.getX(), 2);
         double secondPointPow = Math.pow(x.getY() - y.getY(), 2);
 

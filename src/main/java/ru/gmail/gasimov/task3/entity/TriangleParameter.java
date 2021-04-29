@@ -52,4 +52,13 @@ public class TriangleParameter {
 
         return result;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("TriangleParameter{");
+        sb.append("square=").append(square);
+        sb.append(", perimeter=").append(perimeter);
+        sb.append('}');
+        return sb.toString();
+    }
 }

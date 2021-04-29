@@ -1,15 +1,15 @@
 package ru.gmail.gasimov.task3.entity;
 
 
-import ru.gmail.gasimov.task3.observer.Observable;
+import ru.gmail.gasimov.task3.observer.TriangleObservable;
 import ru.gmail.gasimov.task3.observer.TriangleEvent;
 import ru.gmail.gasimov.task3.observer.TriangleObserver;
 import ru.gmail.gasimov.task3.util.IdGenerator;
 
 import java.util.Objects;
 
-public class Triangle implements Observable {
-    private final long shapeId;
+public class Triangle implements TriangleObservable {
+    private final long triangleId;
 
     private Point firstPoint;
     private Point secondPoint;
@@ -17,8 +17,18 @@ public class Triangle implements Observable {
     private TriangleType triangleType;
     private TriangleObserver triangleObserver;
 
+    {
+        this.triangleObserver = null;
+        this.triangleId = IdGenerator.generateId();
+    }
 
     public Triangle() {
+    }
+
+    public Triangle(Point firstPoint, Point secondPoint, Point thirdPoint) {
+        this.firstPoint = firstPoint;
+        this.secondPoint = secondPoint;
+        this.thirdPoint = thirdPoint;
     }
 
     public TriangleType getTriangleType() {
@@ -33,17 +43,8 @@ public class Triangle implements Observable {
         return triangleObserver;
     }
 
-    public void setTriangleObserver(TriangleObserver triangleObserver) {
-        this.triangleObserver = triangleObserver;
-    }
-
-    {
-        this.triangleObserver = null;
-        this.shapeId = IdGenerator.generateId();
-    }
-
-    public long getShapeId() {
-        return shapeId;
+    public long getTriangleId() {
+        return triangleId;
     }
 
     public Point getFirstPoint() {
@@ -70,6 +71,11 @@ public class Triangle implements Observable {
         this.thirdPoint = thirdPoint;
     }
 
+    public void setTriangleObserver(TriangleObserver triangleObserver) {
+        this.triangleObserver = triangleObserver;
+    }
+
+
     @Override
     public void attachObserver(TriangleObserver triangleObserver) {
         this.triangleObserver = triangleObserver;
@@ -93,7 +99,7 @@ public class Triangle implements Observable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Triangle triangle = (Triangle) o;
-        return shapeId == triangle.shapeId &&
+        return triangleId == triangle.triangleId &&
                 Objects.equals(firstPoint, triangle.firstPoint) &&
                 Objects.equals(secondPoint, triangle.secondPoint) &&
                 Objects.equals(thirdPoint, triangle.thirdPoint) &&
@@ -111,5 +117,17 @@ public class Triangle implements Observable {
         result = result * prime + triangleType.hashCode();
 
         return result;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Triangle{");
+        sb.append("triangleId=").append(triangleId);
+        sb.append(", firstPoint=").append(firstPoint);
+        sb.append(", secondPoint=").append(secondPoint);
+        sb.append(", thirdPoint=").append(thirdPoint);
+        sb.append(", triangleType=").append(triangleType);
+        sb.append('}');
+        return sb.toString();
     }
 }

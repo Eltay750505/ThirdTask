@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 import ru.gmail.gasimov.task3.entity.Triangle;
 import ru.gmail.gasimov.task3.entity.TriangleParameter;
-import ru.gmail.gasimov.task3.exception.ShapeException;
+import ru.gmail.gasimov.task3.exception.TriangleException;
 import ru.gmail.gasimov.task3.observer.TriangleEvent;
 import ru.gmail.gasimov.task3.observer.TriangleObserver;
 import ru.gmail.gasimov.task3.service.CalculationService;
@@ -22,13 +22,13 @@ public class TriangleObserverImpl implements TriangleObserver {
         CalculationService service = new CalculationServiceImpl();
         TriangleWarehouse warehouse = TriangleWarehouseImpl.getInstance();
 
-        Long ellipseId = triangle.getShapeId();
+        Long ellipseId = triangle.getTriangleId();
         try {
             double perimeter = service.findPerimeter(triangle);
             double area = service.findArea(triangle);
             TriangleParameter newParameters = new TriangleParameter(perimeter, area);
             warehouse.put(ellipseId, newParameters);
-        } catch (ShapeException e) {
+        } catch (TriangleException e) {
             logger.error("Warehouse cannot be updated", e.getCause());
         }
     }
