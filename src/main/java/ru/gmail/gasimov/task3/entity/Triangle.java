@@ -77,7 +77,6 @@ public class Triangle implements TriangleObservable {
     @Override
     public void attachObserver(TriangleObserver triangleObserver) {
         this.triangleObserver = triangleObserver;
-
     }
 
     @Override
