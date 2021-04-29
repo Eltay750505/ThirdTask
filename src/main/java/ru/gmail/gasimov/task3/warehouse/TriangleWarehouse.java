@@ -9,4 +9,5 @@ public interface TriangleWarehouse {
     TriangleParameter remove(Long triangleId);
 
     TriangleParameter get(Long triangleId) throws TriangleException;
+
 }

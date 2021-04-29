@@ -6,10 +6,13 @@ import org.apache.logging.log4j.Logger;
 import ru.gmail.gasimov.task3.entity.Point;
 import ru.gmail.gasimov.task3.entity.Triangle;
 import ru.gmail.gasimov.task3.exception.TriangleException;
+import ru.gmail.gasimov.task3.observer.impl.TriangleObserverImpl;
+import ru.gmail.gasimov.task3.service.FindService;
+import ru.gmail.gasimov.task3.service.impl.FindServiceImpl;
 import ru.gmail.gasimov.task3.validator.TriangleValidator;
 
 public class TriangleCreator {
-    public static final Logger Logger = LogManager.getLogger();
+    private static final Logger Logger = LogManager.getLogger();
 
     public TriangleCreator() {
     }
@@ -41,7 +44,9 @@ public class TriangleCreator {
                     + third);
             throw new TriangleException("Triangle cannot be created from this points");
         }
-
-        return new Triangle(first, second, third);
+        FindService findService = new FindServiceImpl();
+        Triangle triangle = new Triangle(first, second, third);
+        triangle.setTriangleType(findService.findTriangleType(triangle));
+        return triangle;
     }
 }

@@ -1,8 +1,8 @@
 package ru.gmail.gasimov.task3.entity;
 
 
-import ru.gmail.gasimov.task3.observer.TriangleObservable;
 import ru.gmail.gasimov.task3.observer.TriangleEvent;
+import ru.gmail.gasimov.task3.observer.TriangleObservable;
 import ru.gmail.gasimov.task3.observer.TriangleObserver;
 import ru.gmail.gasimov.task3.util.IdGenerator;
 
@@ -10,7 +10,6 @@ import java.util.Objects;
 
 public class Triangle implements TriangleObservable {
     private final long triangleId;
-
     private Point firstPoint;
     private Point secondPoint;
     private Point thirdPoint;
@@ -37,6 +36,7 @@ public class Triangle implements TriangleObservable {
 
     public void setTriangleType(TriangleType triangleType) {
         this.triangleType = triangleType;
+        notifyObserver();
     }
 
     public TriangleObserver getTriangleObserver() {
@@ -53,6 +53,7 @@ public class Triangle implements TriangleObservable {
 
     public void setFirstPoint(Point firstPoint) {
         this.firstPoint = firstPoint;
+        notifyObserver();
     }
 
     public Point getSecondPoint() {
@@ -61,6 +62,7 @@ public class Triangle implements TriangleObservable {
 
     public void setSecondPoint(Point secondPoint) {
         this.secondPoint = secondPoint;
+        notifyObserver();
     }
 
     public Point getThirdPoint() {
@@ -69,12 +71,8 @@ public class Triangle implements TriangleObservable {
 
     public void setThirdPoint(Point thirdPoint) {
         this.thirdPoint = thirdPoint;
+        notifyObserver();
     }
-
-    public void setTriangleObserver(TriangleObserver triangleObserver) {
-        this.triangleObserver = triangleObserver;
-    }
-
 
     @Override
     public void attachObserver(TriangleObserver triangleObserver) {

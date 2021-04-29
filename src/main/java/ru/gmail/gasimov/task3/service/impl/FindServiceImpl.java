@@ -8,9 +8,9 @@ import ru.gmail.gasimov.task3.service.FindService;
 public class FindServiceImpl implements FindService {
     @Override
     public TriangleType findTriangleType(Triangle triangle) {
-        double firstSide = TriangleUtil.findSide(triangle.getFirstPoint(), triangle.getSecondPoint());
-        double secondSide = TriangleUtil.findSide(triangle.getFirstPoint(), triangle.getThirdPoint());
-        double thirdSide = TriangleUtil.findSide(triangle.getSecondPoint(), triangle.getThirdPoint());
+        double firstSide = findSide(triangle.getFirstPoint(), triangle.getSecondPoint());
+        double secondSide = findSide(triangle.getFirstPoint(), triangle.getThirdPoint());
+        double thirdSide = findSide(triangle.getSecondPoint(), triangle.getThirdPoint());
 
         if (firstSide == secondSide || firstSide == thirdSide || secondSide == thirdSide) {
             if (firstSide == secondSide && secondSide == thirdSide && thirdSide == firstSide) {
@@ -37,9 +37,9 @@ public class FindServiceImpl implements FindService {
         Point secondPoint = triangle.getSecondPoint();
         Point thirdPoint = triangle.getThirdPoint();
 
-        double firstSide = TriangleUtil.findSide(firstPoint, secondPoint);
-        double secondSide = TriangleUtil.findSide(secondPoint, thirdPoint);
-        double thirdSide = TriangleUtil.findSide(thirdPoint, firstPoint);
+        double firstSide = findSide(firstPoint, secondPoint);
+        double secondSide = findSide(secondPoint, thirdPoint);
+        double thirdSide = findSide(thirdPoint, firstPoint);
 
         sides[0] = firstSide;
         sides[1] = secondSide;

@@ -2,20 +2,20 @@ package ru.gmail.gasimov.task3.entity;
 
 
 public class TriangleParameter {
-    private double square;
+    private double area;
     private double perimeter;
 
     public TriangleParameter(double square, double perimeter) {
-        this.square = square;
+        this.area = square;
         this.perimeter = perimeter;
     }
 
-    public double getSquare() {
-        return square;
+    public double getArea() {
+        return area;
     }
 
-    public void setSquare(double square) {
-        this.square = square;
+    public void setArea(double area) {
+        this.area = area;
     }
 
     public double getPerimeter() {
@@ -39,7 +39,7 @@ public class TriangleParameter {
         TriangleParameter parameters = (TriangleParameter) obj;
 
         return perimeter == parameters.perimeter
-                && square == parameters.square;
+                && area == parameters.area;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class TriangleParameter {
         int prime = 31;
         int result = 1;
 
-        result = result * prime + Double.hashCode(square);
+        result = result * prime + Double.hashCode(area);
         result = result * prime + Double.hashCode(perimeter);
 
         return result;
@@ -56,7 +56,7 @@ public class TriangleParameter {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("TriangleParameter{");
-        sb.append("square=").append(square);
+        sb.append("area=").append(area);
         sb.append(", perimeter=").append(perimeter);
         sb.append('}');
         return sb.toString();
