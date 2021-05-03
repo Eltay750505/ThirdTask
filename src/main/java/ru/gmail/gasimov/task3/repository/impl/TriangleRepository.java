@@ -25,6 +25,10 @@ public class TriangleRepository implements Repository<Triangle> {
         return instance;
     }
 
+    public List<Triangle> getCollection(){
+        return collection;
+    }
+
     @Override
     public boolean add(Triangle item) {
         return collection.add(item);

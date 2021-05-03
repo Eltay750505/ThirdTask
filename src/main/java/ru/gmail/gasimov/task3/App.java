@@ -1,5 +1,8 @@
 package ru.gmail.gasimov.task3;
 
+import ru.gmail.gasimov.task3.comparator.FirstPointYComparator;
+import ru.gmail.gasimov.task3.comparator.IdComparator;
+import ru.gmail.gasimov.task3.comparator.TriangleTypeComparator;
 import ru.gmail.gasimov.task3.creator.TriangleCreator;
 import ru.gmail.gasimov.task3.entity.Point;
 import ru.gmail.gasimov.task3.entity.Triangle;
@@ -11,10 +14,7 @@ import ru.gmail.gasimov.task3.observer.impl.TriangleObserverImpl;
 import ru.gmail.gasimov.task3.parser.TriangleParser;
 import ru.gmail.gasimov.task3.reader.TriangleReader;
 import ru.gmail.gasimov.task3.repository.Repository;
-import ru.gmail.gasimov.task3.repository.Specification;
-import ru.gmail.gasimov.task3.repository.impl.TriangleAreaSpecification;
 import ru.gmail.gasimov.task3.repository.impl.TriangleRepository;
-import ru.gmail.gasimov.task3.repository.impl.TriangleTypeSpecification;
 import ru.gmail.gasimov.task3.service.CalculationService;
 import ru.gmail.gasimov.task3.service.impl.CalculationServiceImpl;
 import ru.gmail.gasimov.task3.warehouse.TriangleWarehouse;
@@ -71,14 +71,17 @@ public class App {
 
         System.out.println(triangleWarehouse.get(triangles.get(0).getTriangleId()));
 
+        List<Triangle> sort = repository.sort(new FirstPointYComparator());
 
-        for (int i = 0; i < triangles.size(); i++) {
-            System.out.println(repository.get(i));
+        for (int i = 0; i < sort.size(); i++) {
+            System.out.println(sort.get(i));
         }
 
-        Specification typeSpecification = new TriangleTypeSpecification("arbitrary");
-        Specification specification = new TriangleAreaSpecification(4, 12);
-        List query = repository.query(typeSpecification);
-        List query1 = repository.query(specification);
+        //Specification typeSpecification = new TriangleTypeSpecification("arbitrary");
+        // Specification specification = new TriangleAreaSpecification(4, 12);
+        // List query = repository.query(typeSpecification);
+        //List query1 = repository.query(specification);
+
+
     }
 }
