@@ -47,6 +47,7 @@ public class App {
 
         Repository<Triangle> repository = TriangleRepository.getInstance();
         TriangleWarehouse triangleWarehouse = TriangleWarehouseImpl.getInstance();
+
         for (int i = 1; i < 4; i++) {
             CalculationService service = new CalculationServiceImpl();
             double perimeter = service.findPerimeter(triangles.get(i));
