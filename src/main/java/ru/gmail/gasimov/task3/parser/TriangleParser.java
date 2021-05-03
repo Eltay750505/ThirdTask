@@ -10,7 +10,7 @@ public class TriangleParser {
                 .split(COORDINATE_SEPARATOR);
 
         if (coordinatesFromTxt.length == 0) {
-            throw new TriangleException("Dont have coordinates in this file");
+            throw new TriangleException("Dont have coordinates in this file : " + correctString);
         }
 
         if (coordinatesFromTxt.length != 6) {

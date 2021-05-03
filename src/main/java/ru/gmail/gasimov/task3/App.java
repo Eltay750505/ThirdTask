@@ -1,15 +1,13 @@
 package ru.gmail.gasimov.task3;
 
 import ru.gmail.gasimov.task3.comparator.FirstPointYComparator;
-import ru.gmail.gasimov.task3.comparator.IdComparator;
-import ru.gmail.gasimov.task3.comparator.TriangleTypeComparator;
 import ru.gmail.gasimov.task3.creator.TriangleCreator;
 import ru.gmail.gasimov.task3.entity.Point;
 import ru.gmail.gasimov.task3.entity.Triangle;
 import ru.gmail.gasimov.task3.entity.TriangleParameter;
 import ru.gmail.gasimov.task3.exception.TriangleException;
-import ru.gmail.gasimov.task3.init.RepositoryInitializer;
-import ru.gmail.gasimov.task3.init.WarehouseInitializer;
+import ru.gmail.gasimov.task3.init.RepositoryInit;
+import ru.gmail.gasimov.task3.init.WarehouseInit;
 import ru.gmail.gasimov.task3.observer.impl.TriangleObserverImpl;
 import ru.gmail.gasimov.task3.parser.TriangleParser;
 import ru.gmail.gasimov.task3.reader.TriangleReader;
@@ -40,8 +38,8 @@ public class App {
             System.out.println(triangleFromDoubleArray);
         }
 
-        RepositoryInitializer repositoryInitializer = new RepositoryInitializer();
-        WarehouseInitializer warehouseInitializer = new WarehouseInitializer();
+        RepositoryInit repositoryInitializer = new RepositoryInit();
+        WarehouseInit warehouseInitializer = new WarehouseInit();
         repositoryInitializer.addTriangleToRepositoryAndInit(triangles.get(0));
         warehouseInitializer.addParametersToWarehouseAndInit(triangles.get(0));
 

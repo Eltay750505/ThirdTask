@@ -8,7 +8,7 @@ import ru.gmail.gasimov.task3.service.impl.CalculationServiceImpl;
 import ru.gmail.gasimov.task3.warehouse.TriangleWarehouse;
 import ru.gmail.gasimov.task3.warehouse.impl.TriangleWarehouseImpl;
 
-public class WarehouseInitializer {
+public class WarehouseInit {
     public void addParametersToWarehouseAndInit(Triangle triangle) throws TriangleException {
         TriangleWarehouse warehouse = TriangleWarehouseImpl.getInstance();
         CalculationService service = new CalculationServiceImpl();
