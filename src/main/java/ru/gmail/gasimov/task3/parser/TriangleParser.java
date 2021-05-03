@@ -17,6 +17,11 @@ public class TriangleParser {
             throw new TriangleException("Wrong amount of coordinates : " + correctString);
         }
 
+        double[] resultArray = convertStringArrayIntoDoubleArray(coordinatesFromTxt);
+        return resultArray;
+    }
+
+    private double[] convertStringArrayIntoDoubleArray(String[] coordinatesFromTxt) {
         double firstValueX = Double.parseDouble(coordinatesFromTxt[0]);
         double firstValueY = Double.parseDouble(coordinatesFromTxt[1]);
         double secondValueX = Double.parseDouble(coordinatesFromTxt[2]);
@@ -24,7 +29,14 @@ public class TriangleParser {
         double thirdValueX = Double.parseDouble(coordinatesFromTxt[4]);
         double thirdValueY = Double.parseDouble(coordinatesFromTxt[5]);
 
-        double[] resultArray = {firstValueX, firstValueY, secondValueX, secondValueY, thirdValueX, thirdValueY};
+        double[] resultArray ={
+                firstValueX,
+                firstValueY,
+                secondValueX,
+                secondValueY,
+                thirdValueX,
+                thirdValueY
+        };
         return resultArray;
     }
 }
