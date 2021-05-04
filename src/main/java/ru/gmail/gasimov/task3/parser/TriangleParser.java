@@ -5,7 +5,7 @@ import ru.gmail.gasimov.task3.exception.TriangleException;
 public class TriangleParser {
     public static final String COORDINATE_SEPARATOR = "\\s+";
 
-    public double[] parseTriangle(String correctString) throws TriangleException {
+    public double[] parseString(String correctString) throws TriangleException {
         String[] coordinatesFromTxt = correctString.trim()
                 .split(COORDINATE_SEPARATOR);
 
@@ -29,7 +29,7 @@ public class TriangleParser {
         double thirdValueX = Double.parseDouble(coordinatesFromTxt[4]);
         double thirdValueY = Double.parseDouble(coordinatesFromTxt[5]);
 
-        double[] resultArray ={
+        double[] resultArray = {
                 firstValueX,
                 firstValueY,
                 secondValueX,

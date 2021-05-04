@@ -1,4 +1,4 @@
-package ru.gmail.gasimov.task3.creator;
+package ru.gmail.gasimov.task3.factory;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -6,15 +6,14 @@ import org.apache.logging.log4j.Logger;
 import ru.gmail.gasimov.task3.entity.Point;
 import ru.gmail.gasimov.task3.entity.Triangle;
 import ru.gmail.gasimov.task3.exception.TriangleException;
-import ru.gmail.gasimov.task3.observer.impl.TriangleObserverImpl;
 import ru.gmail.gasimov.task3.service.FindService;
 import ru.gmail.gasimov.task3.service.impl.FindServiceImpl;
 import ru.gmail.gasimov.task3.validator.TriangleValidator;
 
-public class TriangleCreator {
-    private static final Logger Logger = LogManager.getLogger();
+public class TriangleFactory {
+    private final static Logger Logger = LogManager.getLogger();
 
-    public TriangleCreator() {
+    public TriangleFactory() {
     }
 
     public static Triangle createTriangleFromDoubleArray(double[] numberArray) throws TriangleException {
